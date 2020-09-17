@@ -63,8 +63,16 @@ function getcomment(post_id)
 
 function deletepost(post_id)
 {
-  alert(post_id);
-  firebase.firestore().collection('posts').where('key','==',post_id).delete();
+//   alert(post_id);
+//   firebase.firestore().collection('posts').where('key','==',post_id).delete();
+  if(confirm("Are you sure?"))
+  {
+     alert("post deleted");
+  }
+  else
+  {
+           alert("delete cancel");
+  }
   
 }
 
