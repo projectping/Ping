@@ -64,6 +64,8 @@ function getcomment(post_id)
 function deletepost(post_id)
 {
   alert(post_id);
+  firebase.firestore().collection('posts').where('key','==',post_id).delete();
+  
 }
 
 
