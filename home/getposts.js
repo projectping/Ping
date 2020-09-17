@@ -37,9 +37,8 @@
             <div style="padding:5px">
                     ${post.caption}
                 </div>            
-            <div class="card-action">
-                <a class="waves-effect waves-light btn"><i class="material-icons right">pan_tool</i>Like</a>                                
-                <button  class="btn" onclick="comment('${posts.id}')"><i class="material-icons right">comment</i>Comment</button>
+            <div class="card-action">                                
+                <button  class="btn" onclick="comment('${posts.id}')"><i class="material-icons right">comment</i>Add Comment</button>
             </div>            
             </div>`;
                           })
