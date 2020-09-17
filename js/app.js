@@ -15,7 +15,7 @@ function signIn()
 {
 	var provider=new firebase.auth.GoogleAuthProvider();
 	firebase.auth().signInWithPopup(provider).then((result)=>{
-			window.open("/home","_self");
+			window.open("/ping/home","_self");
 	});
 }
 //-------------signIn ------------------------//
@@ -28,7 +28,7 @@ function signOut()
 {
     localStorage.clear();
 	firebase.auth().signOut().then(()=>{
-		window.open("/","_self");
+		window.open("/ping/","_self");
 	});
 }
 //------------------signout-------------------------//
@@ -294,14 +294,14 @@ function chatwithfriend(friendid,friendname,friendprofile)
               if(flag)
             {
                 // showinfo(); //display info is user exist
-                window.open("/chat","_self");           
+                window.open("/ping/chat","_self");           
             }
             else
             {
                     // add user and display info
                     firebase.firestore().collection('friend_list').add(friendList).then((result)=>{                        
                         localStorage.setItem("chatkey",result.id);
-                        window.open("/chat","_self");           
+                        window.open("/ping/chat","_self");           
                      })
             }
         })        
