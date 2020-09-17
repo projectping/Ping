@@ -222,15 +222,15 @@ function sendmessage()
         let sender=localStorage.getItem("currentUserkey");
         let chatobj={};  
 
-        let hr=new Date().getHours();
-        let min=new Date().getMinutes();
-        let sec=new Date().getSeconds();
+        let hr=new Date().getUTCHours();
+        let min=new Date().getUTCMinutes();
+        let sec=new Date().getUTCSeconds();
 
         let seconds=(3600*hr)+(min*60)+sec;
 
-        let year=new Date().getFullYear();
-        let month=new Date().getMonth();
-        let currentdate=new Date().getDate();
+        let year=new Date().getUTCFullYear();
+        let month=new Date().getUTCMonth();
+        let currentdate=new Date().getUTCDate();
 
         let day=`${year}${month}${currentdate}`;
       
