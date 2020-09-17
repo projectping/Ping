@@ -68,7 +68,7 @@ function deletepost(post_id)
 {
   if(confirm("Are you sure?"))
   {
-    firebase.firestore().collection('posts').where('key','==',post_id).delete();
+    firebase.firestore().collection('posts').doc(post_id).delete();
      alert("post deleted");
     loadmypost();
     
