@@ -4,7 +4,7 @@
         
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+        <link rel="shortcut icon" type="image/png" href="/ping/images/logo.png">
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified CSS -->
@@ -24,6 +24,7 @@
                         <li><a href="/ping/people"><i class="material-icons left">group_add</i>people</a></li>
                         <li class="active"><a href="/ping/chat"><i class="material-icons left">person_pin</i>Chats</a></li>
                         <li><a href="/ping/addpost"><i class="material-icons left">add_circle_outline</i>Add Post</a></li>
+                        <li><a href="/ping/profile"><i class="material-icons left">collections</i>My Posts</a></li>
                         <li><a href="/ping/notification"><i class="material-icons left">add_alert</i>Notification</a></li>
                         <li>
                             <button onclick="signOut()" class="btn waves-effect waves-light">Logout</button>
@@ -49,7 +50,7 @@
 
                         <div class="card horizontal" style="padding: 4px;margin: 0;align-items: center;">  <!-- chatheader -->
                             <div class="card-image" style="margin: 5px;padding: 2px;">
-                                <img id="friendprofile" src="/images/profilepic.png" style="width: 50px; height: 50px;border-radius: 50%">
+                                <img id="friendprofile" src="/ping/images/profilepic.png" style="width: 50px; height: 50px;border-radius: 50%">
                             </div>
                             <p style="font-size: 1.2rem;" id="friendname"></p>
                                     <a class='dropdown-trigger btn right' href='#' data-target='dropdown1' style="margin-left: auto;margin-right: 20px;">
@@ -109,7 +110,7 @@
                     firebase.auth().onAuthStateChanged((user)=>{
                     if(user===null)
                     {
-                        window.open("/","_self");
+                        window.open("/ping","_self");
                     }
                     });
             </script>
