@@ -70,13 +70,8 @@ function deletepost(post_id)
   {
     firebase.firestore().collection('posts').doc(post_id).delete();
      alert("post deleted");
-    loadmypost();
-    
+    window.open("/ping/profile","_self"); 
   }
-//   else
-//   {
-//            alert("delete cancel");
-//   }
   
 }
 
