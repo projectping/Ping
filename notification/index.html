@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+        <title>Ping</title>        
+    </head>
+    <body>
+        
+        
+
+        <ul id="slide-out" class="sidenav sidenav-fixed">  <!-- sidebar starts -->
+            <li><div class="user-view">
+                <div class="background">
+                    <!-- <img src="https://lorempixel.com/800/400/nature/4"> -->
+                </div>
+                <img class="circle" src="/images/profilepic.png" id="userprofile">
+                <h5  id="username"></h5>
+                <small  id="useremail"></small>
+            </div></li>
+            <li><a href="/home"><i class="material-icons left">account_balance</i>Home</a></li>
+            <li><a href="/friends"><i class="material-icons left">people</i>Friends</a></li>
+            <li><a href="/people"><i class="material-icons left">group_add</i>people</a></li>
+            <li><a href="/chat"><i class="material-icons left">person_pin</i>Chats</a></li>
+            <li><a href="/addpost"><i class="material-icons left">add_circle_outline</i>Add Post</a></li>
+            <li class="active"><a href="#"><i class="material-icons left">add_alert</i>Notification</a></li>
+        </ul> <!-- sidebar ends -->
+        
+        
+<main>
+    
+    <div class=" navbar-fixed"><!-- navbar starts -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" class="brand-logo">Ping</a>
+            <ul id="nav-mobile" class="right">
+                <!-- <li> -->
+                <button onclick="signOut()" class="btn waves-effect waves-light">Logout</button>
+                <!-- </li> -->
+
+            </ul>
+        </div>
+    </nav>
+    </div><!-- navbar ends -->
+    <section> <!-- content starts here -->
+    <div class="row">
+       
+        <div class="col s12 m9 offset-m1 ">
+            <ul class="collection" id="notificationlist">
+
+                    <!-- <li class="collection-item avatar valign-wrapper">
+                        <img src="https://lorempixel.com/100/190/nature/6" alt="" class="circle" border="4px solid black;">
+                        <span class="title">Sent you friend request...</span>                        
+                        <small style="margin-left: auto;">Time</small>
+                    </li> -->
+
+            </ul>
+        </div>
+    </div>
+    </section> <!-- content ends here -->
+</main>
+            
+            <!-- jquery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase.js"></script>
+            <!-- The firebase config custom file -->
+            <script src="/js/firebaseconfig.js"></script>
+            <!-- The custom javascript file -->
+            <script>
+                    firebase.auth().onAuthStateChanged((user)=>{
+                    if(user===null)
+                    {
+                        window.open("/","_self");
+                    }
+                    });
+            </script>
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-messaging.js"></script>            
+            <!-- The firebase config custom file -->
+            <script src="/js/firebaseconfig.js"></script>
+            <!-- <script src="/js/firebase-messaging.js"></script>   -->
+            <script src="/js/app.js"></script>
+            <script>
+                notificationlist();
+            </script>
+        </body>
+    </html>

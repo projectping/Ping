@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="chat.css">
+        <title>Ping</title>        
+    </head>
+    <body>
+        <!-- navbar starts -->
+        <div class="navbar-fixed">
+            <nav class="blue">
+                <div class="nav-wrapper" style="margin: auto; width: 90%;">                                       
+                    <a href="#" class="brand-logo">Ping</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/home"><i class="material-icons left">account_balance</i>Home</a></li>
+                        <li><a href="/friends"><i class="material-icons left">people</i>Friends</a></li>
+                        <li><a href="/people"><i class="material-icons left">group_add</i>people</a></li>
+                        <li class="active"><a href="/chat"><i class="material-icons left">person_pin</i>Chats</a></li>
+                        <li><a href="/addpost"><i class="material-icons left">add_circle_outline</i>Add Post</a></li>
+                        <li><a href="/notification"><i class="material-icons left">add_alert</i>Notification</a></li>
+                        <li>
+                            <button onclick="signOut()" class="btn waves-effect waves-light">Logout</button>
+                        </li>                        
+                    </ul>
+                </div>
+            </nav>
+        </div>
+       
+        
+        <section style="height: 90vh;">
+            
+            <div class="chatbox" style="height: 100%;">
+                <div class="row" style="margin:0;height: 100%;">
+
+                    <div class="col s12 m4" style="height: 100%;" id="chatlist">
+
+                        <!-- chat list comes here -->                        
+
+                    </div>
+
+                    <div class="col m8" style="height: 100%;">
+
+                        <div class="card horizontal" style="padding: 4px;margin: 0;align-items: center;">  <!-- chatheader -->
+                            <div class="card-image" style="margin: 5px;padding: 2px;">
+                                <img id="friendprofile" src="/images/profilepic.png" style="width: 50px; height: 50px;border-radius: 50%">
+                            </div>
+                            <p style="font-size: 1.2rem;" id="friendname"></p>
+                                    <a class='dropdown-trigger btn right' href='#' data-target='dropdown1' style="margin-left: auto;margin-right: 20px;">
+                                        <i class="large material-icons">mode_edit</i>
+                                    </a>
+                                    <ul id='dropdown1' class='dropdown-content'>
+                                        <li><a href="#!"></a></li>
+                                        <li>
+                                            <a href="#" onclick="chooseimage()"><i class="material-icons">attach_file</i>images</a>
+                                            <input type="file" accept="image/*" onchange="sendimage(this)" id="imgfile" name="" style="display: none">
+                                        </li>
+                                    </ul>
+                        </div>  <!-- chatheader ends -->
+
+                        <div class="card  grey lighten-3" id="message_body" style="margin: 0;height:70%;overflow-y: scroll;"> <!-- chatbody -->
+                            <div class="card-content" id="message_list">
+                                <!-- chats come here -->                                                      
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin: 0;padding: 0;background-color: transparent;"> <!-- chatfooter -->
+                            <div class="card-content">
+                                <div class="row" style="padding: 0;margin: 0;">
+                                    <div class="col s1">
+                                        <i class="material-icons prefix">insert_emoticon</i>
+                                    </div>
+                                    <div class="input-field col s10" style="padding: 0;margin: 0;">
+                                        <input id="msginput" type="text" onclick="send()">
+                                        <label for="msginput">Write msg here...</label>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>                    
+                </div>
+            </div>
+            </section>
+            
+            <!-- jquery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-messaging.js"></script>            
+            <!-- The firebase config custom file -->
+            <script src="/js/firebaseconfig.js"></script>
+            <!-- <script src="/js/firebase-messaging.js"></script>   -->
+            <script src="/js/app.js"></script>
+
+            <!-- The custom javascript file -->
+            <script>
+                    firebase.auth().onAuthStateChanged((user)=>{
+                    if(user===null)
+                    {
+                        window.open("/","_self");
+                    }
+                    });
+            </script>
+            
+            
+
+            <script>
+                
+                function friendinfo()
+                {
+                    var friendprofile=localStorage.getItem("friendprofile");
+                    var friendname=localStorage.getItem("friendname");
+                    var friendid=localStorage.getItem("friendid");
+                    if(friendid!==localStorage.getItem("currentUserkey") && friendid!==null)
+                    {
+                            document.getElementById("friendname").innerHTML=friendname;
+                            if(friendprofile!=='')
+                            {
+                                document.getElementById("friendprofile").src=friendprofile;    
+                            }                                                       
+                    }                   
+                }
+                friendinfo();
+                loadchatlist();    
+
+                var chatkey=localStorage.getItem("chatkey"); 
+
+                if(chatkey!==null)
+                {
+                        firebase.firestore().collection('chatMessages').doc(chatkey).onSnapshot((doc)=>{              
+                        var message=doc.data();
+                        var msg='';
+                        document.getElementById("message_list").innerHTML=msg; 
+                        var sender=localStorage.getItem("currentUserkey");
+                        var msgarr=Object.entries(message);
+                        msgarr.sort().forEach((data)=>{                            
+
+                            if(data[1].sender===sender)
+                            {                                
+
+                                if(data[1].msg.indexOf("base64")!==-1)
+                                {
+                                        msg=` <div class="row">
+                                    <p class="rightmsg" style="padding:0px">
+                                         <img src="${data[1].msg}" width="200px" height="200px"/>    
+                                    <br>                                    
+                                    <small>${data[1].dateTime}</small>
+                                    </p>                                                                        
+                                 </div>`;
+                                }
+                                else
+                                {
+
+                                   msg=` <div class="row">
+                                    <p class="rightmsg">
+                                    ${data[1].msg}
+                                    <br>                                    
+                                    <small>${data[1].dateTime}</small>
+                                    </p>                                                                        
+                                 </div>`;                                    
+                                }
+
+                            }
+                            else
+                            {
+                                 if(data[1].msg.indexOf("base64")!==-1)
+                                {
+                                        msg=` <div class="row">
+                                    <p class="leftmsg">
+                                         <img src="${data[1].msg}" width="200px" height="200px"/>    
+                                    <br>                                    
+                                    <small>${data[1].dateTime}</small>
+                                    </p>                                                                        
+                                 </div>`;
+                                }
+                                else
+                                {
+
+                                   msg=` <div class="row">
+                                    <p class="leftmsg">
+                                    ${data[1].msg}
+                                    <br>                                    
+                                    <small>${data[1].dateTime}</small>
+                                    </p>                                                                        
+                                 </div>`;                                    
+                                }   
+                            }                               
+                              document.getElementById("message_list").innerHTML+=msg; 
+                              document.getElementById("msginput").focus();
+                              document.getElementById("message_body").scrollTo(0, document.getElementById("message_list").clientHeight );
+                            })                        
+                         })    
+                }
+            </script>                 
+        </body>
+    </html>

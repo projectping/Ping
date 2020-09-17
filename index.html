@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <title>Ping</title>
+        <style>
+        .card-content
+        {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        }
+        .google-btn
+        {
+        background-color: white;
+        padding: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: 1px solid lightgrey;
+        justify-content: center;
+        }
+        .google-btn:hover
+        {
+        box-shadow: 2px 2px 10px 3px lightgrey;
+        }
+        .google-icon
+        {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        }
+        .btn-text
+        {
+        font-size: 1.2rem;
+        font-family: "Roboto";
+        }
+        </style>
+    </head>
+    <body>
+        
+        
+        <div class="row" style="margin: 0">
+            <div class="col s12 m8 offset-m2">
+                <div class="card" style="height: 80vh;">
+                    <div class="card-content" style="height:100%;">
+                        <!-- <button onclick="signIn()" class="btn waves-effect waves-light">Sign in with Google<i class="material-icons right">send</i></button> -->
+                        <img src="/images/intro.png" alt="">
+                        <button class="google-btn white waves-effect waves-blue"  onclick="signIn()" >
+                        <img class="google-icon" src="/images/google.svg"/>
+                        <p class="btn-text">Sign in with google</p>
+                        </button>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase.js"></script>
+        <!-- The firebase config custom file -->
+        <script src="/js/firebaseconfig.js"></script>
+        <script>
+        firebase.auth().onAuthStateChanged((user)=>{
+        if(user!==null)
+        {
+        window.open("/home","_self");
+        }
+        });        
+        </script>
+        <!-- The custom javascript file -->
+        <script src="/js/app.js"></script>        
+    </body>
+</html>

@@ -1,0 +1,35 @@
+main {
+      padding-left: 300px;
+    }
+
+  
+    .post-img
+    {
+    	width: 400px;
+    	height: 400px;
+    }
+
+    nav
+    {
+    	width:80%;
+    }
+
+    ul .active
+    {
+        background-color: lightgrey !important;
+    }
+
+
+
+
+    /*design for mobile*/
+     @media only screen and (max-width : 992px) {
+      main{
+        padding-left: 0;
+      }
+    nav
+    {
+    	width:100%;
+    }
+
+    }

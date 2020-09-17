@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+        <title>Ping</title>
+        
+    </head>
+    <body>
+        
+        
+
+        <ul id="slide-out" class="sidenav sidenav-fixed">  <!-- sidebar starts -->
+            <li><div class="user-view">
+                <div class="background">
+                    <img src="https://lorempixel.com/800/400/nature/4">
+                </div>
+                <a href="#user"><img class="circle" src="https://lorempixel.com/400/400/people/8"></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div></li>
+            <li><a href="/home"><i class="material-icons left">account_balance</i>Home</a></li>
+            <li class="active"><a href="/friends"><i class="material-icons left">people</i>Friends</a></li>
+            <li><a href="/people"><i class="material-icons left">group_add</i>people</a></li>
+            <li><a href="/chat"><i class="material-icons left">person_pin</i>Chats</a></li>
+            <li><a href="/addpost"><i class="material-icons left">add_circle_outline</i>Add Post</a></li>
+            <li><a href="/notification"><i class="material-icons left">add_alert</i>Notification</a></li>
+        </ul> <!-- sidebar ends -->
+        
+        
+        <main>
+            
+        <div class=" navbar-fixed"><!-- navbar starts -->
+            <nav class="blue">
+                <div class="nav-wrapper container">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#" class="brand-logo">Ping</a>
+                    <ul id="nav-mobile" class="right">
+                        <button onclick="signOut()" class="btn waves-effect waves-light">Logout</button>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- navbar ends -->
+
+        <section> <!-- content starts here -->
+
+<div class="row">
+
+    <div class="col s12 m8 offset-m2">
+       friends detail will come here
+    </div>
+   
+
+</div>
+            
+        </section> <!-- content ends here -->
+
+
+        </main>
+            
+            <!-- jquery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>            
+            <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-messaging.js"></script>            
+            <!-- The firebase config custom file -->
+            <script src="/js/firebaseconfig.js"></script>
+            <!-- <script src="/js/firebase-messaging.js"></script>   -->
+            <script src="/js/app.js"></script>
+        </body>
+    </html>

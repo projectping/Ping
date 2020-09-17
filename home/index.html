@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" type="image/png" href="/images/logo.png">
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <title>Ping</title>
+    </head>
+    <body>
+        
+        
+        <ul id="slide-out" class="sidenav sidenav-fixed">  <!-- sidebar starts -->
+        <li><div class="user-view">
+            <div class="background">
+                <!-- <img src="https://lorempixel.com/800/400/nature/4"> -->
+            </div>
+            <img class="circle" src="/images/profilepic.png" id="userprofile">
+            <h5  id="username"></h5>
+            <small  id="useremail"></small>
+        </div></li>
+        <li class="active"><a href="/home"><i class="material-icons left">account_balance</i>Home</a></li>
+        <li><a href="/friends"><i class="material-icons left">people</i>Friends</a></li>
+        <li><a href="/people"><i class="material-icons left">group_add</i>people</a></li>
+        <li><a href="/chat"><i class="material-icons left">person_pin</i>Chats</a></li>
+        <li><a href="/addpost"><i class="material-icons left">add_circle_outline</i>Add Post</a></li>
+        <li><a href="/profile"><i class="material-icons left">add_circle_outline</i>My Posts</a></li>
+        <li><a href="/notification"><i class="material-icons left">add_alert</i>Notification</a></li>
+        </ul> <!-- sidebar ends -->
+        
+        
+        <main>
+            
+            <div class=" navbar-fixed"><!-- navbar starts -->
+            <nav class="blue">
+                <div class="nav-wrapper container">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#" class="brand-logo">Ping</a>
+                    <ul id="nav-mobile" class="right">
+                        <!-- <li> -->
+                        <button onclick="signOut()" class="btn waves-effect waves-light">Logout</button>
+                        <!-- </li> -->
+                    </ul>
+                </div>
+            </nav>
+            </div><!-- navbar ends -->
+            <section> <!-- content starts here -->
+            <div class="row">
+                <div class="col s12 m6 offset-m2" id="postlist">                    
+                    <!-- posts come here -->
+                </div>                
+            </div>
+            </section> <!-- content ends here -->
+        </main>
+        
+         <!-- comment modal -->
+  <div id="comment_modal" class="modal">
+    <div class="modal-content">      
+      <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+          <textarea id="textarea-comment" class="materialize-textarea"></textarea>
+          <label for="textarea-comment">Write Your comment here...</label>
+        </div>
+      </div>
+    </form>
+  </div>
+    </div>
+    <div class="modal-footer">
+      <button  onclick="addcomment()" class="btn modal-close waves-effect waves-green btn">
+            <i class="material-icons right">comment</i>Add Comment
+        </button>
+    </div>
+  </div>
+
+
+
+
+ <!-- getcomment Structure -->
+  <div id="getcomment" class="modal">
+    <div class="modal-content">
+      <div class="card-reveal">                
+                <span class="card-title grey-text text-darken-4">Comments till now <span id="commentcount"></span></span>
+                <ul class="collection" id="comment_list">
+                    <!-- comment list comes here -->
+                 </ul>
+        </div>
+    </div>    
+  </div>
+
+
+
+
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase.js"></script>
+        <!-- The firebase config custom file -->
+        <script src="/js/firebaseconfig.js"></script>
+        <!-- The custom javascript file -->
+        <script>
+        firebase.auth().onAuthStateChanged((user)=>{
+        if(user===null)
+        {
+            window.open("/","_self");
+        }
+        });
+        </script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-messaging.js"></script>
+        <!-- The firebase config custom file -->
+        <script src="/js/firebaseconfig.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="getposts.js"></script>        
+        <script src="comment.js"></script>        
+    </body>
+</html>
