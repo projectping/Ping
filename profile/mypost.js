@@ -1,4 +1,4 @@
-
+function loadmypost(){
 var userid=localStorage.getItem("currentUserkey");
 firebase.firestore().collection('posts').where('postedby','==',userid).get().then((postsnapshot)=>{
                           postsnapshot.docs.forEach((posts)=>{
@@ -22,6 +22,9 @@ firebase.firestore().collection('posts').where('postedby','==',userid).get().the
             </div>`;
           })
     })  
+}
+
+loadmypost();
 
 
 
@@ -63,16 +66,17 @@ function getcomment(post_id)
 
 function deletepost(post_id)
 {
-//   alert(post_id);
-//   firebase.firestore().collection('posts').where('key','==',post_id).delete();
   if(confirm("Are you sure?"))
   {
+    firebase.firestore().collection('posts').where('key','==',post_id).delete();
      alert("post deleted");
+    loadmypost();
+    
   }
-  else
-  {
-           alert("delete cancel");
-  }
+//   else
+//   {
+//            alert("delete cancel");
+//   }
   
 }
 
