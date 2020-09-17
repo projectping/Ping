@@ -91,7 +91,14 @@
             <script src="/ping/js/app.js"></script>
             <script src="./addpost.js"></script>
 
-
+<script>
+        firebase.auth().onAuthStateChanged((user)=>{
+        if(user===null)
+        {
+            window.open("/ping","_self");
+        }
+        });
+        </script>
 
 
 
