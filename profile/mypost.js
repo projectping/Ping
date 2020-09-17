@@ -59,3 +59,11 @@ function getcomment(post_id)
                 getcommentinstance.open();                
                 })  
 }
+
+
+function deletepost(post_id)
+{
+  alert(post_id);
+}
+
+
