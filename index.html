@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/ping/css/main.css">
         <title>Ping</title>
         <style>
         .card-content
@@ -55,7 +55,7 @@
                 <div class="card" style="height: 80vh;">
                     <div class="card-content" style="height:100%;">
                         <!-- <button onclick="signIn()" class="btn waves-effect waves-light">Sign in with Google<i class="material-icons right">send</i></button> -->
-                        <img src="/images/intro.png" alt="">
+                        <img src="/ping/images/intro.png" alt="">
                         <button class="google-btn white waves-effect waves-blue"  onclick="signIn()" >
                         <img class="google-icon" src="/ping/images/google.svg"/>
                         <p class="btn-text">Sign in with google</p>
@@ -72,16 +72,16 @@
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase.js"></script>
         <!-- The firebase config custom file -->
-        <script src="/js/firebaseconfig.js"></script>
+        <script src="/ping/js/firebaseconfig.js"></script>
         <script>
         firebase.auth().onAuthStateChanged((user)=>{
         if(user!==null)
         {
-        window.open("/home","_self");
+        window.open("/ping/home","_self");
         }
         });        
         </script>
         <!-- The custom javascript file -->
-        <script src="/js/app.js"></script>        
+        <script src="/ping/js/app.js"></script>        
     </body>
 </html>
