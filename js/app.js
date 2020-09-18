@@ -65,7 +65,14 @@ function signOut()
           })
 	    console.log(notificationcount);
 //           document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
-	    document.getElementById("notificationcount").innerHTML=notificationcount;
+	    if(notificationcount!==0)
+	    {
+	    	document.getElementById("notificationcount").innerHTML=`<span class="badge green">${notificationcount}</span>`;
+	    }
+	    else
+	    {
+		    document.getElementById("notificationcount").innerHTML=`<span class="badge red">${notificationcount}</span>`;
+	    }
     })
 
 
