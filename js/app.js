@@ -37,6 +37,35 @@ function signOut()
 // ----------------notification count--------------------//
 
 
+//     var notificationcount=0;
+//     var currentUserkey=localStorage.getItem("currentUserkey");                       
+//     firebase.firestore().collection('notification').get().then((snapshot)=>{
+//           snapshot.docs.forEach((doc)=>{
+//                 var notification=doc.data(); 
+//                 if(notification.sendTo===currentUserkey && notification.status==="Pending")
+//                 {
+//                       notificationcount=notificationcount+1;
+//                 }                
+//           })
+//           document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
+//     })
+
+    var notificationcount=0;
+    var currentUserkey=localStorage.getItem("currentUserkey");                       
+    firebase.firestore().collection('notification').onSnapshot((snapshot)=>{
+          snapshot.docChanges().forEach((doc)=>{
+                var notification=doc.data(); 
+                if(notification.sendTo===currentUserkey && notification.status==="Pending")
+                {
+                      notificationcount=notificationcount+1;
+                }                
+          })
+          document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
+    })
+
+
+
+
 
 // ----------------notification count--------------------//
 
