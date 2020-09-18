@@ -53,8 +53,8 @@ function signOut()
     var notificationcount=0;
     var currentUserkey=localStorage.getItem("currentUserkey");                       
     firebase.firestore().collection('notification').onSnapshot((snapshot)=>{
-          snapshot.docChanges().forEach((doc)=>{
-                var notification=doc.data(); 
+          snapshot.docChanges().forEach((change)=>{
+                var notification=change.doc.data(); 
                 if(notification.sendTo===currentUserkey && notification.status==="Pending")
                 {
                       notificationcount=notificationcount+1;
