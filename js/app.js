@@ -610,7 +610,6 @@ function friendlist()
                                                     ${frienddata.name}
                                                 </div>
                                                 <div class="card-action">
-                                                    <a href="friendprofile.html">View Profile</a> 
                                                     <button class="btn blue waves-effect waves-light" onclick="chatwithfriend( '${snapshot.id}' , '${frienddata.name}' ,'${frienddata.photoURL}' )">chat</button>                                                   
                                                 </div>
                                             </div>
