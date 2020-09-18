@@ -56,12 +56,14 @@ function signOut()
 	  var notificationcount=0;
           snapshot.docChanges().forEach((change)=>{
                 var notification=change.doc.data(); 
+		  console.log(notification);
                 if(notification.sendTo===currentUserkey && notification.status==="Pending")
                 {
                       notificationcount=notificationcount+1;
+			console.log(notificationcount);
                 }                
           })
-          document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
+//           document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
     })
 
 
