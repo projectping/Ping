@@ -37,18 +37,6 @@ function signOut()
 // ----------------notification count--------------------//
 
 
-//     var notificationcount=0;
-//     var currentUserkey=localStorage.getItem("currentUserkey");                       
-//     firebase.firestore().collection('notification').get().then((snapshot)=>{
-//           snapshot.docs.forEach((doc)=>{
-//                 var notification=doc.data(); 
-//                 if(notification.sendTo===currentUserkey && notification.status==="Pending")
-//                 {
-//                       notificationcount=notificationcount+1;
-//                 }                
-//           })
-//           document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
-//     })
 
     
     var currentUserkey=localStorage.getItem("currentUserkey");                       
@@ -56,15 +44,11 @@ function signOut()
 	  var notificationcount=0;
           snapshot.docChanges().forEach((change)=>{
                 var notification=change.doc.data(); 
-		  console.log(notification);
                 if(notification.sendTo===currentUserkey && notification.status==="Pending")
                 {
                       notificationcount=notificationcount+1;
-			console.log(notificationcount);
                 }                
           })
-	    console.log(notificationcount);
-//           document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
 	    if(notificationcount!==0)
 	    {
 	    	document.getElementById("notificationcount").innerHTML=`<span class="badge green">${notificationcount}</span>`;
