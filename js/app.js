@@ -34,6 +34,14 @@ function signOut()
 //------------------signout-------------------------//
 
 
+// ----------------notification count--------------------//
+
+
+
+// ----------------notification count--------------------//
+
+
+
 //---------------------------------State Change------------------------------//
 //check state change
 function onFirebaseStateChanged()
