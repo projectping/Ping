@@ -69,10 +69,6 @@ function signOut()
 	    {
 	    	document.getElementById("notificationcount").innerHTML=`<span class="badge green">${notificationcount}</span>`;
 	    }
-	    else
-	    {
-		    document.getElementById("notificationcount").innerHTML=`<span class="badge red">${notificationcount}</span>`;
-	    }
     })
 
 
