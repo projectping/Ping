@@ -64,7 +64,7 @@ function signOut()
                 }                
           })
 	    console.log(notificationcount);
-//           document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
+          document.getElementsByClassName("notificationcount").innerHTML=notificationcount;
     })
 
 
